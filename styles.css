@@ -1,3 +1,10 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 h1 {
     display: flex;
     justify-content: center;
@@ -16,7 +23,29 @@ h2 {
 
 .selection {
     border: 5px solid black;
-    border-radius: 10px;;
+    border-radius: 10px;
     padding: 5px;
+}
 
+.selection-result-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 48px;
+}
+
+.score-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 30px;
+}
+
+/*.hidden {
+    display: none;
+} */
+
+#reset {
+    margin: 5%;
+    width: 100px;
 }
