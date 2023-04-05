@@ -1,3 +1,7 @@
+html {
+    color-scheme: dark;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -47,5 +51,11 @@ h2 {
 
 #reset-button {
     margin: 5%;
-    width: 100px;
+    width: 200px;
+    height: 30px;;
+}
+
+#end-game-message {
+    font-size: 64px;
+    font-weight: bolder;
 }
