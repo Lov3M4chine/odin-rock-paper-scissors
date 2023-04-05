@@ -7,6 +7,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 10px;
 }
 
 h1 {
@@ -29,6 +30,7 @@ h2 {
     border: 5px solid black;
     border-radius: 10px;
     padding: 5px;
+    font-size: 50px;
 }
 
 .selection-result-container {
@@ -45,9 +47,9 @@ h2 {
     font-size: 30px;
 }
 
-/*.hidden {
+.hidden {
     display: none;
-} */
+}
 
 #reset-button {
     margin: 5%;

@@ -8,14 +8,18 @@ const computerSelectionPlaceholder = document.getElementById("computer-selection
 const userScorePlaceholder = document.getElementById("user-score-count");
 const computerScorePlaceholder = document.getElementById("computer-score-count");
 const endGameMessage = document.getElementById("end-game-message");
+const resetButton = document.getElementById("reset-button");
 
+//determines a random selection of Rock, Paper, or Scissors from the options array
 function getComputerChoice () {
     const randomIndex = Math.floor(Math.random() * options.length)
     const randomOption = options[randomIndex]
     computerSelection = randomOption;
 }
 
+//determines the winner according to rock,paper,scissors rules - records the score in the proper variables
 function determineWinner() {
+    //if there is a tie, we add 1 to each score
     if (playerSelection === computerSelection) {
         userScore++
         computerScore++
@@ -31,6 +35,7 @@ function determineWinner() {
     }
 }
 
+//displays contents such as the player's selection, computers selection, and sets these on a timer so they don't all display at once. It also disables the buttons so the user can't click comtinuously causing bugs
 function displayUpdatedContent() {
     disableButtons();
     computerSelectionPlaceholder.textContent = "";
@@ -46,26 +51,31 @@ function displayUpdatedContent() {
     ;
 }
 
+//checks to see if the end game conditions have been met (score of 5), if so, it displays the proper message and enables the reset button
 function checkEndGame() {
     setTimeout(function() {
         if (userScore === 5 && computerScore === 5) {
             disableButtons();
             endGameMessage.style.color = "black";
             endGameMessage.textContent = "It's a tie!";
+            resetButton.classList.remove("hidden");
         }
         else if (userScore === 5) {
             disableButtons();
             endGameMessage.style.color = "green";
-            endGameMessage.textContent = "You win! Congratulations!";  
+            endGameMessage.textContent = "You win! Congratulations!";
+            resetButton.classList.remove("hidden"); 
         }
         else if (computerScore === 5) {
             disableButtons();
             endGameMessage.style.color = "red"
             endGameMessage.textContent = "You've lost. Try again!";
+            resetButton.classList.remove("hidden");
         }
     }, 6000);
 }
 
+//a reset function to reset the game and clear the screen - only appears when the game has reached the end-game conditions
 function reset() {
     userScore = 0;
     computerScore = 0;
@@ -74,8 +84,10 @@ function reset() {
     userScorePlaceholder.textContent = "";
     computerScorePlaceholder.textContent = "";
     endGameMessage.textContent = "";
+    resetButton.classList.add("hidden")
 }
 
+//disables the buttons during timeout
 function disableButtons() {
     const buttons = document.querySelectorAll('.selection');
     buttons.forEach(button => {
@@ -83,6 +95,7 @@ function disableButtons() {
     });
 }
 
+//enables buttoms after timeout
 function enableButtons() {
     const buttons = document.querySelectorAll('.selection');
     buttons.forEach(button => {
@@ -90,7 +103,7 @@ function enableButtons() {
     });
 }
 
-// Allow user to select either rock paper scissors
+//event listener to determine if one of the user selections is made by clicking - if so, sets all of our functions into play
 document.getElementById("rockButton").addEventListener("click", function() {
     playerSelection = "Rock";
     getComputerChoice();
