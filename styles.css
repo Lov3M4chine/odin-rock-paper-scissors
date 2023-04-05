@@ -1,0 +1,22 @@
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+}
+
+.selection-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.selection {
+    border: 5px solid black;
+    border-radius: 10px;;
+    padding: 5px;
+
+}
